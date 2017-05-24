@@ -1,5 +1,6 @@
 package ru.bobrov.parserHTML;
 
+import ru.bobrov.parserHTML.gui.SeachForm;
 import ru.bobrov.parserHTML.model.HHStrategy;
 import ru.bobrov.parserHTML.model.Model;
 import ru.bobrov.parserHTML.model.Provider;
@@ -10,13 +11,9 @@ import ru.bobrov.parserHTML.view.HtmlView;
  */
 public class Aggregator {
     public static void main(String[] args) {
-        Provider provider = new Provider(new HHStrategy());
-        HtmlView view = new HtmlView();
-        Model model = new Model(view, provider);
-        Controller controller = new Controller(model);
-
-        view.setController(controller);
-
-        view.userCitySelectEmulationMethod();
+        /*
+        */
+        SeachForm form = new SeachForm();
+        form.go(3);
     }
 }

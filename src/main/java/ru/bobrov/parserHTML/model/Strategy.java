@@ -8,5 +8,5 @@ import java.util.List;
  * Created by user on 24.05.17.
  */
 public interface Strategy {
-    public List<Vacancy> getVacancies(String searchString);
+    List<Vacancy> getVacancies(String searchString);
 }

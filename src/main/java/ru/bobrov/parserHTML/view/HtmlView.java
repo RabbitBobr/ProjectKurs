@@ -41,8 +41,8 @@ public class HtmlView implements View {
         this.controller = controller;
     }
 
-    public void userCitySelectEmulationMethod() {
-        controller.onCitySelect("Java+Moscow");
+    public void userCitySelectEmulationMethod(String seachString, String city) {
+        controller.onCitySelect(seachString + "+" + city);
     }
 
     private String getUpdatedFileContent(List<Vacancy> vacancies) {
