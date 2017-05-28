@@ -10,9 +10,8 @@ import java.util.List;
  * Created by Rabbik on 25.05.2017.
  */
 public class ListVacanciesTableModel extends AbstractTableModel {
-    private final int columnCount = 5;
-    private List<Vacancy> vacancies = new ArrayList<Vacancy>();
-    private List<Vacancy> saveList = new ArrayList<Vacancy>();
+    private List<Vacancy> vacancies = new ArrayList<>();
+    private List<Vacancy> saveList = new ArrayList<>();
 
     public ListVacanciesTableModel(List<Vacancy> oldVacancy) {
         vacancies = oldVacancy;
@@ -40,7 +39,7 @@ public class ListVacanciesTableModel extends AbstractTableModel {
     }
 
     public int getColumnCount() {
-        return columnCount;
+        return 5;
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -59,7 +58,7 @@ public class ListVacanciesTableModel extends AbstractTableModel {
     }
 
     public void filterSalary() {
-        List<Vacancy> result = new ArrayList<Vacancy>(vacancies);
+        List<Vacancy> result = new ArrayList<>(vacancies);
         for (Vacancy v : vacancies)
             if (v.getSalary().equals(""))
                 result.remove(v);

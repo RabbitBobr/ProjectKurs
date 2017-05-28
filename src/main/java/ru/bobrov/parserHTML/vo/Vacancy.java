@@ -68,12 +68,7 @@ public class Vacancy implements Serializable {
 
         Vacancy vacancy = (Vacancy) o;
 
-        if (title != null ? !title.equals(vacancy.title) : vacancy.title != null) return false;
-        if (salary != null ? !salary.equals(vacancy.salary) : vacancy.salary != null) return false;
-        if (city != null ? !city.equals(vacancy.city) : vacancy.city != null) return false;
-        if (companyName != null ? !companyName.equals(vacancy.companyName) : vacancy.companyName != null) return false;
-        if (siteName != null ? !siteName.equals(vacancy.siteName) : vacancy.siteName != null) return false;
-        return url != null ? url.equals(vacancy.url) : vacancy.url == null;
+        return (title != null ? title.equals(vacancy.title) : vacancy.title == null) && (salary != null ? salary.equals(vacancy.salary) : vacancy.salary == null) && (city != null ? city.equals(vacancy.city) : vacancy.city == null) && (companyName != null ? companyName.equals(vacancy.companyName) : vacancy.companyName == null) && (siteName != null ? siteName.equals(vacancy.siteName) : vacancy.siteName == null) && (url != null ? url.equals(vacancy.url) : vacancy.url == null);
 
     }
 
@@ -88,15 +83,5 @@ public class Vacancy implements Serializable {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "Vacancy{" +
-                "title='" + title + '\'' +
-                ", salary='" + salary + '\'' +
-                ", city='" + city + '\'' +
-                ", companyName='" + companyName + '\'' +
-                ", siteName='" + siteName + '\'' +
-                ", url='" + url + '\'' +
-                '}';
-    }
+
 }

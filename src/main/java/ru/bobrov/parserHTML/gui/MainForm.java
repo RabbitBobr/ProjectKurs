@@ -38,7 +38,7 @@ public class MainForm extends JFrame {
 
         JFrame frame = new JFrame("Поиск работы");
         frame.setSize(new Dimension(600, 400));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setLayout(new BorderLayout());
 
@@ -101,9 +101,7 @@ public class MainForm extends JFrame {
 
                         URI url = new URI(listTableModel.getValueAt(table.getSelectedRow(), 4).toString());
                         desktop.browse(url);
-                    } catch (URISyntaxException ex) {
-                        ex.getMessage();
-                    } catch (IOException ex) {
+                    } catch (URISyntaxException | IOException ex) {
                         ex.getMessage();
                     }
                 }
@@ -156,7 +154,7 @@ public class MainForm extends JFrame {
     }
 
     private java.util.List<Vacancy> setVacancies (String seachString, String city) {
-        java.util.List<Vacancy> result = new ArrayList<>();
+        java.util.List<Vacancy> result;
         Provider provider = new Provider(new HHStrategy());
         HtmlView view = new HtmlView();
         Model model = new Model(view, provider);
@@ -181,12 +179,10 @@ return result;
     private List<Vacancy> readData () {
         List<Vacancy> result = new ArrayList<>();
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileData))) {
-            while(true) {
+            while (true) {
                 Vacancy vacancy = (Vacancy) in.readObject();
                 result.add(vacancy);
             }
-        }  catch (FileNotFoundException ex) {
-            ex.getMessage();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IOException ex) {

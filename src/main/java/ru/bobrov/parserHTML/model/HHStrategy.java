@@ -6,7 +6,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class HHStrategy implements Strategy {
 
 
     public List<Vacancy> getVacancies(String searchString) {
-        List<Vacancy> vacancies = new ArrayList<Vacancy>();
+        List<Vacancy> vacancies = new ArrayList<>();
         int page = 0;
         try {
 
@@ -58,8 +57,6 @@ public class HHStrategy implements Strategy {
                 document = getDocument(searchString, ++page);
 
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -67,7 +64,7 @@ public class HHStrategy implements Strategy {
         return vacancies;
     }
 
-    protected Document getDocument(String searchString, int page) throws Exception{
+    private Document getDocument(String searchString, int page) throws Exception{
         Document document = null;
         try {
             String url = String.format(URL_FORMAT, searchString, page);

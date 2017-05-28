@@ -3,9 +3,7 @@ package ru.bobrov.parserHTML.view;
 import ru.bobrov.parserHTML.Controller;
 import ru.bobrov.parserHTML.vo.Vacancy;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -26,9 +24,7 @@ public class HtmlView implements View {
                 uri = new URI(filePath);
                 java.awt.Desktop.getDesktop().browse(uri);
 
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }  catch (URISyntaxException ex) {
+            } catch (IOException | URISyntaxException ex) {
                 ex.printStackTrace();
             }
         } catch (IOException e) {
@@ -63,12 +59,12 @@ public class HtmlView implements View {
         htmlContent.append("    </tr>");
 
         for (Vacancy vacancy : vacancies) {
-            htmlContent.append(String.format("    <tr class=\"vacancy\">"));
+            htmlContent.append("    <tr class=\"vacancy\">");
             htmlContent.append(String.format("        <td class=\"title\"><a href=\"%s\">%s</a></td>", vacancy.getUrl(), vacancy.getTitle()));
             htmlContent.append(String.format("        <td class=\"city\">%s</td>", vacancy.getCity()));
             htmlContent.append(String.format("        <td class=\"companyName\">%s</td>", vacancy.getCompanyName()));
             htmlContent.append(String.format("        <td class=\"salary\">%s</td>", vacancy.getSalary()));
-            htmlContent.append(String.format("    </tr>"));
+            htmlContent.append("    </tr>");
         }
 
         htmlContent.append("    </tr>");
@@ -81,7 +77,7 @@ public class HtmlView implements View {
 
     private void updateFile(String htmlContent) throws IOException{
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))){
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath), "UTF-8"))){
             writer.write(htmlContent);
         }
     }
