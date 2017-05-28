@@ -1,9 +1,11 @@
 package ru.bobrov.parserHTML.vo;
 
+import java.io.Serializable;
+
 /**
  * Created by user on 24.05.17.
  */
-public class Vacancy {
+public class Vacancy implements Serializable {
     private String title;
     private String salary;
     private String city;

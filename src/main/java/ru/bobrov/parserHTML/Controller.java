@@ -1,6 +1,9 @@
 package ru.bobrov.parserHTML;
 
 import ru.bobrov.parserHTML.model.Model;
+import ru.bobrov.parserHTML.vo.Vacancy;
+
+import java.util.List;
 
 /**
  * Created by user on 24.05.17.
@@ -15,7 +18,7 @@ public class Controller {
         this.model = model;
     }
 
-    public void onCitySelect(String cityName){
-        model.selectCity(cityName);
+    public List<Vacancy> onCitySelect(String cityName){
+        return model.selectCity(cityName);
     }
 }

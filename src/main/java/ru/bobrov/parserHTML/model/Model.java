@@ -21,13 +21,14 @@ public class Model {
         this.providers = providers;
     }
 
-    public void selectCity(String city){
-        List<Vacancy> list = new ArrayList<>();
+    public List<Vacancy> selectCity(String city){
+        List<Vacancy> list = new ArrayList<Vacancy>();
 
         for (Provider provider : providers){
             list.addAll(provider.getJavaVacancies(city));
         }
 
         view.update(list);
+        return list;
     }
 }

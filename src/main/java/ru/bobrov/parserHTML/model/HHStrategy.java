@@ -18,9 +18,9 @@ public class HHStrategy implements Strategy {
     private static final String URL_FORMAT = "http://hh.ru/search/vacancy?text=%s&page=%d";
 
 
-    @Override
+
     public List<Vacancy> getVacancies(String searchString) {
-        List<Vacancy> vacancies = new ArrayList<>();
+        List<Vacancy> vacancies = new ArrayList<Vacancy>();
         int page = 0;
         try {
 
@@ -39,7 +39,6 @@ public class HHStrategy implements Strategy {
                     String salary = element.getElementsByAttributeValue("data-qa", "vacancy-serp__vacancy-compensation").text();
 
                     Vacancy vacancy = new Vacancy();
-                    System.out.println(page + " " +title);
                     vacancy.setTitle(title);
                     vacancy.setCity(city);
                     vacancy.setCompanyName(companyName);

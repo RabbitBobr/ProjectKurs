@@ -18,7 +18,6 @@ public class HtmlView implements View {
 
     private final String filePath = "vacancies.html";
 
-    @Override
     public void update(List<Vacancy> vacancies) {
         try {
             updateFile(getUpdatedFileContent(vacancies));
@@ -36,13 +35,13 @@ public class HtmlView implements View {
             e.printStackTrace();
         }
     }
-    @Override
+
     public void setController(Controller controller) {
         this.controller = controller;
     }
 
-    public void userCitySelectEmulationMethod(String seachString, String city) {
-        controller.onCitySelect(seachString + "+" + city);
+    public List<Vacancy> userCitySelectEmulationMethod(String seachString, String city) {
+        return controller.onCitySelect(seachString + "+" + city);
     }
 
     private String getUpdatedFileContent(List<Vacancy> vacancies) {
